@@ -2,4 +2,7 @@ var/
 bin/
 parts/
 .installed.cfg
-
+.mr.developer.cfg
+develop-eggs/
+eggs/
+src/
