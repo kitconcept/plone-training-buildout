@@ -1,12 +1,12 @@
-===============================================================================
+==============================================================================
 Übung 1: Plone Installation
-===============================================================================
+==============================================================================
 
 In der ersten Übung lernen wir wie Plone installiert wird.
 
 
 Drei Wege zur Installation von Plone
-===============================================================================
+==============================================================================
 
 Es gibt drei verschiedene Wege zur Installation von Plone:
 
@@ -18,24 +18,28 @@ _`Unified Installer`:http://plone.org/products/plone/releases
 
 
 Vorbereitungen
-===============================================================================
+==============================================================================
 
 Curl installieren::
 
-  $ sudo apt-get install -y curl
+  $ sudo apt-get install -y wget
 
 Python 2.7 installieren::
 
   $ sudo apt-get install -y libxslt1-dev libxml2-dev
   $ sudo apt-get install -y python-dev python-imaging python-lxml
 
-Distribute installieren::
+Setuptools installieren::
 
-  $ curl http://python-distribute.org/distribute_setup.py | sudo python
+  $ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python2.7
+
+Distribute war ein Fork von Setuptools und lange Zeit die bevorzugte Variante
+zur Installation von Buildout. Mittlerweile ist Setuptools wieder die bessere
+Option.
 
 
 Buildout
-===============================================================================
+==============================================================================
 
 Plone Verzeichnis erstellen::
 
@@ -44,13 +48,13 @@ Plone Verzeichnis erstellen::
 Download bootstrap Datei::
 
   $ cd uebung-01
-  $ curl -O http://python-distribute.org/bootstrap.py
+  $ wget https://bootstrap.pypa.io/bootstrap-buildout.py
 
 Datei "buildout.cfg" erstellen::
 
   [buildout]
   parts = instance
-  extends = http://dist.plone.org/release/4.2.1/versions.cfg
+  extends = http://dist.plone.org/release/4.3.4/versions.cfg
 
   [instance]
   recipe = plone.recipe.zope2instance
@@ -58,9 +62,12 @@ Datei "buildout.cfg" erstellen::
   user = admin:admin
   eggs = Plone
 
+  [versions]
+  zope.interface = 4.0.5
+
 Buildout ausführen::
 
-  $ python bootstrap.py
+  $ python bootstrap-buildout.py
   $ bin/buildout
 
 Zope Instanz starten (im "Foreground"-Modus)::
@@ -77,7 +84,7 @@ Zope Instanz stoppen::
 
 
 Plone Demo
-===============================================================================
+==============================================================================
 
 - Plone Instanz erstellen
 - Front-page editieren
