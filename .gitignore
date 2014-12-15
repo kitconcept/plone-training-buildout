@@ -1,0 +1,5 @@
+var/
+bin/
+parts/
+.installed.cfg
+
