@@ -62,12 +62,28 @@ Datei "buildout.cfg" erstellen::
   user = admin:admin
   eggs = Plone
 
-  [versions]
-  zope.interface = 4.0.5
-
 Buildout ausführen::
 
   $ python bootstrap-buildout.py
+  $ bin/buildout
+
+Version Conflict::
+
+  While:
+    Installing.
+    Getting section instance.
+    Initializing section instance.
+    Installing recipe plone.recipe.zope2instance.
+  Error: There is a version conflict.
+  We already have: zope.interface 4.0.5
+
+buildout.cfg::
+
+  [versions]
+  zope.interface = 4.0.5
+
+Buildout erneut ausführen::
+
   $ bin/buildout
 
 Zope Instanz starten (im "Foreground"-Modus)::
@@ -81,13 +97,3 @@ Zope Instanz starten::
 Zope Instanz stoppen::
 
   $ bin/instance stop
-
-
-Plone Demo
-==============================================================================
-
-- Plone Instanz erstellen
-- Front-page editieren
-- Ordner hinzufügen
-- Seite hinzufügen
-- Seite veröffentlichen
