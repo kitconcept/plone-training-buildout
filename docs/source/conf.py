@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Plone Training Buildout documentation build configuration file, created by
-# sphinx-quickstart on Wed Dec 17 17:39:24 2014.
+# sphinx-quickstart on Wed Dec 17 17:48:22 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
