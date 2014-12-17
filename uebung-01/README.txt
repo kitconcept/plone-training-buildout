@@ -67,7 +67,7 @@ Buildout ausführen::
   $ python bootstrap-buildout.py
   $ bin/buildout
 
-Version Conflict::
+Versionskonflikte::
 
   While:
     Installing.
@@ -77,17 +77,45 @@ Version Conflict::
   Error: There is a version conflict.
   We already have: zope.interface 4.0.5
 
-buildout.cfg::
+Grund: Ubuntu verwendet eine alte Version von zope.interface.
+
+Lösung: Version pinnen (buildout.cfg)::
 
   [versions]
   zope.interface = 4.0.5
 
 Pin versions::
 
-  buildout.dumppickedversions
+  Entweder "buildout.dumppickedversions" oder zc.buildout > 2.1.0.
+
+buildout.cfg::
+
+  [versions]
+  zc.buildout = 2.3.1
+
+Output::
+  The constraint, 0.6c11, is not consistent with the requirement, 'setuptools>=8.0'.
+  While:
+    Installing.
+    Checking for upgrades.
+  Error: Bad constraint 0.6c11 setuptools>=8.0
+
+Pin versions::
+
+  [version]
+  setuptools = 8.0.4
+
 Buildout erneut ausführen::
 
   $ bin/buildout
+
+Output::
+
+  [versions]
+  Products.PloneFormGen = 1.7.16
+  Products.PythonField = 1.1.3
+  Products.TALESField = 1.1.3
+  Products.TemplateFields = 1.2.5
 
 Zope Instanz starten (im "Foreground"-Modus)::
 
