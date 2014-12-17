@@ -18,3 +18,5 @@ Instanz 1  Instanz 2  Instanz 3  Instanz 4
   |
 ZEO (8089)
 
+
+Varnish: plone.app.caching einrichten
