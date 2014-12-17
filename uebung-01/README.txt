@@ -82,6 +82,9 @@ buildout.cfg::
   [versions]
   zope.interface = 4.0.5
 
+Pin versions::
+
+  buildout.dumppickedversions
 Buildout erneut ausführen::
 
   $ bin/buildout
