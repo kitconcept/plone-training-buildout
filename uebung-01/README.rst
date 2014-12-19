@@ -84,8 +84,8 @@ Zope Instanz stoppen::
   $ bin/instance stop
 
 
-Versionskonflikte beheben
--------------------------
+Versionskonflikte mit setuptools und zc.buildout beheben
+--------------------------------------------------------
 
 Mögliche Versionskonflikte (bei Ubuntu)::
 
@@ -123,6 +123,10 @@ Lösung: Setuptools pinnen::
   [version]
   setuptools = 8.0.4
 
+Fertiges buildout.cfg mit allen Erweiterungen:
+
+.. literalinclude:: ../../uebung-01/buildout.cfg
+
 .. note::
 
   Liste von möglichen Buildout-Konflikten gibt es hier http://docs.plone.org/manage/troubleshooting/buildout.html
@@ -131,40 +135,4 @@ Bei Problemen: Löschen aller Buildout-Dateien::
 
   $ rm -rf bin develop-eggs/ parts/ .installed.cfg .mr.developer.cfg
 
-
-Stabile Buildouts mit Version pinning
--------------------------------------
-
-Vermeidung von Problemen in der Zukunft durch pinnen aller Versionen. Dies geht entweder über die Verwendung der Erweiterung "buildout.dumppickedversions" oder der Verwendung von zc.buildout > 2.1.0.
-
-buildout.cfg::
-
-  [buildout]
-  extends = http://dist.plone.org/release/4.3.4/versions.cfg
-  parts = instance
-  show-picked-versions = true
-
-Buildout erneut ausführen::
-
-  $ bin/buildout
-
-Versions pins in buildout.cfg kopieren (buildout.cfg):
-
-  [versions]
-  Products.PloneFormGen = 1.7.16
-  Products.PythonField = 1.1.3
-  Products.TALESField = 1.1.3
-  Products.TemplateFields = 1.2.5
-
-Buildout mit z3c.checkversions auf Aktualisierungen prüfen::
-
-  [instance]
-  recipe = plone.recipe.zope2instance
-  ...
-  eggs =
-      ...
-      z3c.checkversions
-
-Fertiges buildout.cfg mit allen Erweiterungen:
-
-.. literalinclude:: ../../uebung-01/buildout.cfg
+Bei schwerwiegenden Problemen setuptools (ggf. auch easy_install und distribute) in '/usr/local/lib/python2.7/dist-packages/' löschen.
