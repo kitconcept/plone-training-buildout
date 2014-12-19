@@ -1,9 +1,23 @@
 ==============================================================================
-Übung 6:
+Übung 6: Nützliche Erweiterungen für den Produktionsbetrieb
 ==============================================================================
 
 Mailinglogger
 -------------
+
+deployment.cfg::
+
+  [instance]
+  eggs += mailinglogger
+  mailinglogger =
+    <mailing-logger>
+      level error
+      smtp-server localhost
+      from server@company.com
+      to me@company.com
+      subject [Mein Server] [%(hostname)s] %(levelname)s - %(line)s
+    </mailing-logger>
+
 
 Sentry
 ------
@@ -25,6 +39,7 @@ deployment.cfg::
       level ERROR
     </sentry>
 
+
 LongRequestLogger
 -----------------
 
@@ -44,33 +59,43 @@ deployment.cfg::
         longrequestlogger_interval 2
       </environment>
 
+
 Monitoring
 ----------
 
 (Nagios, Munin)
 
+
 ZODB Packen
 -----------
 
-Backup
-------
+https://pypi.python.org/pypi/plone.recipe.zeoserver
 
-(collective.recipe.backup, cronjob, restore)
+
+Backup/Restore
+--------------
+
+https://pypi.python.org/pypi/collective.recipe.backup
 
 
 Logrotate
 ---------
 
-event-log-max-size = 5 MB
-event-log-old-files = 7
-access-log-max-size = 20 MB
-access-log-old-files = 7
+https://pypi.python.org/pypi/plone.recipe.zope2instance
 
-Supervisor
-----------
+deployment.cfg::
+
+  [instance]
+  recipe = plone.recipe.zope2instance
+  ...
+  event-log-max-size = 5 MB
+  event-log-old-files = 7
+  access-log-max-size = 20 MB
+  access-log-old-files = 7
+
 
 ZEO-Replication
 ---------------
 
-plone.app.caching
------------------
+https://pypi.python.org/pypi/zc.zrs
+https://pypi.python.org/pypi/plone.recipe.zeoserver
